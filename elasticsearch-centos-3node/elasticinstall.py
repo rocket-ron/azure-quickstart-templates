@@ -4,22 +4,34 @@ import subprocess
 import socket
 import sys
 
-clustername = sys.argv[1]
-number_nodes = sys.argv[2]
-accountname = sys.argv[3] 
-accountkey =  sys.argv[4]
+clustername, number_nodes, accountname, accountkey = None, None, None, None
+
+
+if len(sys.argv) > 1:
+	clustername = sys.argv[1]
+if len(sys.argv) > 2:
+	number_nodes = sys.argv[2]
+if len(sys.argv) > 3:
+	accountname = sys.argv[3] 
+if len(sys.argv) > 4:
+	accountkey =  sys.argv[4]
 
 print"inputs:\n"
-print "clustername = " + clustername 
-print "accontname = " + accountname 
-print "accountkey = " + accountkey 
+
+if (clustername):
+	print "clustername = " + clustername 
+if (accountname):
+	print "accontname = " + accountname 
+if (accountkey):
+	print "accountkey = " + accountkey 
+
 
 hostname = socket.gethostname()
 print "hostname: " + hostname
 
 hostbase = "10.0.2.1"
 print "hostbase: " + hostbase
-
+'''
 
 def RunCommand(cmd):
 	ret = subprocess.check_output(cmd, shell=True)
@@ -106,4 +118,5 @@ print "finished writing config file"
 
 RunCommand("systemctl start elasticsearch")
 print "elastic install script finished"
+'''
 
